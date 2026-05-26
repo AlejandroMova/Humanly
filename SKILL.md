@@ -310,6 +310,16 @@ GStreamer pipeline builders. These have different rules:
   does. The test: could you derive this comment by just reading the line?
   If yes, delete it. If no, keep it.
 
+  This test applies to **inline comments next to code lines** — not to
+  module or function docstrings. A module docstring explains the purpose,
+  constraints, and design decisions of the file as a whole. Even if those
+  things are "derivable" by reading every line carefully, spelling them out
+  at the top saves the reader from having to do that. Always preserve or
+  write a module-level docstring. If the before file has one, keep the
+  purpose/constraint content and drop only any "New pattern to note:"
+  annotations that describe the before file's problems — those are
+  Humanly example metadata, not production documentation.
+
   ```python
   # Bad — describes what the code does (obvious from reading it)
   # Loop through capabilities and create nvinfer elements
@@ -664,6 +674,9 @@ Ask yourself:
 4. Did I flag any `sys.exit` → `raise` changes for the developer to verify?
 5. Did I preserve middleware/plugin registration order?
 6. Did I leave intentional patterns alone or flag them without changing them?
+7. Did I preserve or write a module-level docstring? If the before file had
+   one, did I keep the purpose/constraint content and drop only the
+   "New pattern to note:" annotations that describe the before's problems?
 
 If any answer is "no" or "unsure" — flag it in the summary rather than
 silently proceeding.
