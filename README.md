@@ -3,6 +3,8 @@
 
 # Humanly
 
+[![Download](https://img.shields.io/github/v/release/YOUR_USERNAME/humanly?label=download%20humanly.skill&style=flat-square)](https://github.com/YOUR_USERNAME/humanly/releases/latest)
+
 > A Claude skill that transforms AI-generated or messy code into clean,
 > human-readable code.
 
@@ -46,8 +48,8 @@ never changes logic, algorithms, or side effects.
 
 ## Installation
 
-1. Download `humanly.skill`
-2. In Claude.ai, go to **Settings → Claude's Skills**
+1. Download `humanly.skill` from the [latest release](https://github.com/AlejandroMova/humanly/releases/latest)
+2. In Claude.ai, go to **Settings → Skills**
 3. Click **Install from file** and select `humanly.skill`
 
 ---
@@ -139,12 +141,11 @@ humanly/
 ├── examples/
 │   ├── before/               # Original messy code samples
 │   └── after/                # Humanly-cleaned versions
-├── references/
-│   ├── python.md             # Python-specific rules
-│   ├── cpp.md                # C++ rules
-│   ├── js.md                 # JavaScript/TypeScript rules
-│   └── configs.md            # YAML, TOML, DeepStream configs
-└── humanly.skill             # Packaged installable file
+└── references/
+    ├── python.md             # Python-specific rules
+    ├── cpp.md                # C++ rules
+    ├── js.md                 # JavaScript/TypeScript rules
+    └── configs.md            # YAML, TOML, DeepStream configs
 ```
 
 ---
