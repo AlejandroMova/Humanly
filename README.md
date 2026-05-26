@@ -3,7 +3,7 @@
 
 # Humanly
 
-[![Download](https://img.shields.io/github/v/release/YOUR_USERNAME/humanly?label=download%20humanly.skill&style=flat-square)](https://github.com/YOUR_USERNAME/humanly/releases/latest)
+[![Download](https://img.shields.io/github/v/release/AlejandroMova/Humanly?label=download%20humanly.skill&style=flat-square)](https://github.com/AlejandroMova/Humanly/releases/latest)
 
 > A Claude skill that transforms AI-generated or messy code into clean,
 > human-readable code.
