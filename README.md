@@ -1,3 +1,9 @@
+![Humanly](assets/banner.svg)
+
+# Humanly
+
+> A Claude skill that fixes AI code smell...
+
 # Humanly
 
 > A Claude skill that transforms AI-generated or messy code into clean,
