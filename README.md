@@ -1,8 +1,5 @@
 ![Humanly](assets/banner.svg)
 
-# Humanly
-
-> A Claude skill that fixes AI code smell...
 
 # Humanly
 
