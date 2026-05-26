@@ -48,9 +48,21 @@ never changes logic, algorithms, or side effects.
 
 ## Installation
 
+### Claude.ai
+
 1. Download `humanly.skill` from the [latest release](https://github.com/AlejandroMova/humanly/releases/latest)
-2. In Claude.ai, go to **Settings → Skills**
+2. Go to **Settings → Skills**
 3. Click **Install from file** and select `humanly.skill`
+
+### Claude Code (terminal)
+
+```bash
+mkdir -p ~/.claude/skills/humanly
+curl -L https://github.com/AlejandroMova/Humanly/releases/latest/download/humanly.skill -o /tmp/humanly.skill
+unzip /tmp/humanly.skill -d ~/.claude/skills/humanly
+```
+
+Restart Claude Code — the skill is available immediately.
 
 ---
 
