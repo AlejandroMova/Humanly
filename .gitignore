@@ -3,3 +3,6 @@ __pycache__/
 *.pyo
 .DS_Store
 CLAUDE.md
+
+# CI build artifacts
+humanly.skill
