@@ -383,13 +383,19 @@ GStreamer pipeline builders. These have different rules:
       a GStreamer inference element and are handled downstream by probes.
 
       Args:
-          cfg: Pipeline config with active capability list and sgie interval.
+          cfg: Pipeline configuration used to determine which capabilities
+              need a GStreamer inference element (via cfg.active_sgies()) and
+              to set the inference interval. A negative sgie_interval means
+              the interval property is disabled and left at its default.
 
       Returns:
-          List of configured nvinfer Gst.Elements, one per GStreamer-backed cap.
+          One configured nvinfer Gst.Element per GStreamer-backed capability,
+          in iteration order. Empty list if all active capabilities are
+          handled by Python workers.
 
       Raises:
-          RuntimeError: If GStreamer cannot instantiate an nvinfer element.
+          RuntimeError: If GStreamer cannot instantiate an nvinfer element —
+              check that the gst-nvinfer plugin is installed and on the path.
       """
   ```
 

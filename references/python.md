@@ -31,15 +31,31 @@
       use a GStreamer inference element.
 
       Args:
-          cfg: Pipeline configuration containing active capability list.
+          cfg: Pipeline configuration used to determine which capabilities
+              need a GStreamer inference element (via cfg.active_sgies())
+              and to set the inference interval. Negative sgie_interval
+              means the interval is disabled and left at its default.
 
       Returns:
-          List of configured nvinfer Gst.Element instances.
+          One configured nvinfer Gst.Element per GStreamer-backed capability,
+          in iteration order. Empty list if all active capabilities are
+          handled by Python workers.
 
       Raises:
-          RuntimeError: If an nvinfer element cannot be created.
+          RuntimeError: If an nvinfer element cannot be created — check
+              that the gst-nvinfer plugin is installed and accessible.
       """
   ```
+- **Args:** document what the parameter is *for*, not just its type.
+  The type hint already says the type — the docstring adds:
+  - What the function actually uses it for (which fields, which method calls)
+  - Constraints or valid ranges when non-obvious (`negative means disabled`)
+  - What `None` means if the parameter is nullable
+- **Returns:** document what the returned value *represents*, not just its type.
+  Include edge cases: when can it be empty, `None`, or zero-length?
+  If order or structure is guaranteed, say so.
+- **Raises:** document the condition that triggers the exception, not just its
+  type: `RuntimeError: If GStreamer cannot create the element — check plugin install.`
 - No docstring needed on `__init__` if the class docstring covers it
 - Module-level docstring: one paragraph explaining purpose + usage example
 

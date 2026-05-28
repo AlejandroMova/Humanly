@@ -9,10 +9,15 @@ def build_sgie_elements(cfg: PipelineConfig) -> list[Gst.Element]:
     use a GStreamer inference element and are handled downstream.
 
     Args:
-        cfg: Pipeline configuration with active capability list and interval.
+        cfg: Pipeline configuration used to determine which capabilities
+            need a GStreamer inference element (via cfg.active_sgies()) and
+            to set the inference interval. Negative sgie_interval means
+            the interval is disabled and left at its GStreamer default.
 
     Returns:
-        List of configured nvinfer Gst.Element instances, one per cap.
+        One configured nvinfer Gst.Element per GStreamer-backed capability,
+        in iteration order. Empty list if all active capabilities are
+        handled by Python workers.
     """
     elements = []
 
@@ -42,15 +47,21 @@ def _create_nvinfer_element(
     """Create and configure a single nvinfer GStreamer element.
 
     Args:
-        cap: Capability name, used to label the element.
-        cfg_path: Path to the nvinfer config file for this capability.
-        cfg: Pipeline config, used to apply the inference interval if set.
+        cap: Capability name (e.g. `"face_recognition"`). Used to name the
+            GStreamer element and label log output.
+        cfg_path: Absolute path to the nvinfer config file for this capability.
+            Must exist and be readable; GStreamer validates it at property set.
+        cfg: Pipeline configuration. Used only to read sgie_interval — if
+            positive, the interval is applied to this element; otherwise the
+            GStreamer default is kept.
 
     Returns:
-        A configured Gst.Element ready to be added to the pipeline.
+        A fully configured nvinfer Gst.Element, ready to be linked into the
+        pipeline. Properties are set; the element is not yet in PLAYING state.
 
     Raises:
-        RuntimeError: If GStreamer cannot create the nvinfer element.
+        RuntimeError: If GStreamer cannot instantiate the nvinfer element —
+            check that the gst-nvinfer plugin is installed and accessible.
     """
     sgie = Gst.ElementFactory.make("nvinfer", f"sgie-{cap}")
     if not sgie:
